@@ -1,7 +1,41 @@
 import wollok.game.*
+import rodados.*
+import Paredes.*
+import colores.*
 
 program corsasEnElGame {
+	game.title("si")
 	// hacer las inicializaciones necesarias 
+	const corsaA = new Corsa(color = azul)
+	const corsaR = new Corsa(color = rojo)
+	const corsaV = new Corsa(color = verde)
+	game.addVisual(corsaA)
+	game.addVisual(corsaR)
+	game.addVisual(corsaV)
+	
+	const pared1 = new Pared(image = "paredLadrillos3.jpg")
+	const pared2 = new Pared(image = "paredLadrillos3.jpg")
+	const pared3 = new Pared(image = "paredLadrillos3.jpg")
+	game.addVisual(pared1)
+	game.addVisual(pared2)
+	game.addVisual(pared3)
+	
+	const ancho = 15
+	const alto = 15
+	var cachitoActual = corsaA
+	
+	game.height(ancho)
+	game.width(alto)
+	
+	
+	keyboard.num1().onPressDo({cachitoActual = corsaA})
+	keyboard.num2().onPressDo({cachitoActual = corsaR})
+	keyboard.num3().onPressDo({cachitoActual = corsaV})
+	
+	keyboard.up().onPressDo ({cachitoActual.moverArriba()})
+	keyboard.down().onPressDo ({cachitoActual.moverAbajo()})
+	keyboard.right().onPressDo ({cachitoActual.moverDerecha()})
+	keyboard.left().onPressDo ({cachitoActual.moverIzquierda()})
 	
 	game.start()
 }
